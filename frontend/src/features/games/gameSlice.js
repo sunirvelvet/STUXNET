@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_URL = 'http://localhost:3000';
+
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
-    const response = await axios.get('/games');
+    const response = await axios.get(`${API_URL}/api/games`);
     return response.data;
-})
+});
 
 export const gameSlice = createSlice({
     name: 'games',
@@ -13,7 +15,6 @@ export const gameSlice = createSlice({
         status: 'idle',
         error: null,
     },
-    reducers: {},
     extraReducers: (builder) => {
         builder
          .addCase(fetchGames.pending, (state) => {

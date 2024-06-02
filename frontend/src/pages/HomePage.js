@@ -1,27 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchGames } from '../features/games/gameSlice';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import GamesList from '../components/GameList';
 
-
-const HomePage = () =>  {
-    const dispatch = useDispatch();
-    const games = useSelector((state) => state.games.games);
-
-    useEffect(() => {
-        dispatch(fetchGames());
-    }, [dispatch]);
-
+const HomePage = () => {
 
     return (
         <div>
             <h1>STUXNET</h1>
             <div>
                 <Link to="/signup">
-                <button>Signup</button>
+                  <button>Signup</button>
                 </Link>
                 <Link to="/login">
-                <button>Login</button>
+                  <button>Login</button>
                 </Link>
             </div>
             <nav>
@@ -31,15 +22,7 @@ const HomePage = () =>  {
                 <a href="#wallet">Wallet</a>
             </nav>
 
-            <div>
-                {games.map((game) => (
-                    <div key={game.id}>
-                        <img src={game.imageUrl} alt={game.title} />
-                        <h2>{game.title}</h2>
-                        <p>{game.description}</p>
-                    </div>
-                ))}
-            </div>
+            <GamesList />
             <footer>Built by SUNIR</footer>
         </div>
     );

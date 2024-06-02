@@ -1,13 +1,13 @@
  const express = require('express');
- const { Game } = require('../models');
+ const { Game } = require('../../models');
 
  const router = express.Router();
 
  router.post('/', async (req, res) => {
-    const { title, description, imageUrl } = req.body;
+    const { title, imageUrl, price } = req.body;
 
     try {
-        const game = await Game.create({ title, description, imageUrl });
+        const game = await Game.create({ title, imageUrl, price });
         res.status(201).json(game);
     } catch (err) {
         res.status(400).json({ error: err.message })

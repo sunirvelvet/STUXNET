@@ -23,7 +23,7 @@ const GamesList = () => {
     }
 
     return (
-        <div>
+        <div className="games-list">
             {games.map((game) => (
                 <div key={game.id}>
                     <img src={game.imageUrl} alt={game.title} />

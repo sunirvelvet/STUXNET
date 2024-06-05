@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import '.././authStyles.css';
 
 const Header = () => {
     const { user } = useSelector((state) => state.auth);
@@ -18,18 +19,17 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header-top">
-                <h1 className="header-title">STUXNET</h1>
-
-                <div className="heder-buttons">
+                <h1 className="header-title">S T U X n e t</h1>
+                <div className="header-buttons">
                     {user ? (
-                        <>
-                        <p>Welcome, {user.username}!</p>
-                        <button onClick={handleLogout}>Logout</button>
-                        </>
+                        <div className='welcome-logout'>
+                            <p>{user.username}</p>
+                            <button onClick={handleLogout} className="logout-button">Logout</button>
+                        </div>
                     ) : (
                         <>
-                            <Link to="/signup"><button>Signup</button></Link>
-                            <Link to="/login"><button>Login</button></Link>
+                            <Link to="/signup"><button className='signup-button'>Signup</button></Link>
+                            <Link to="/login"><button className="login-button">Login</button></Link>
                         </>
                     )}
                 </div>
@@ -42,7 +42,6 @@ const Header = () => {
             </nav>
         </header>
     );
-
 };
 
 export default Header;

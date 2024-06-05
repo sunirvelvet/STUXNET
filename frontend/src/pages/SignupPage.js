@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { signupUser } from '../features/auth/authSlice';
+import { Link, useNavigate } from 'react-router-dom';
+import { signupUser,resetError } from '../features/auth/authSlice';
+import '../authStyles.css';
 
 const SignupPage = () => {
     const [username, setUsername] = useState('');
@@ -12,6 +13,10 @@ const SignupPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        dispatch(resetError());
+    }, [dispatch]);
+
+    useEffect(() => {
         if (user) {
             navigate('/loggedin');
         }
@@ -19,42 +24,46 @@ const SignupPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(signupUser({ username, email, password })).then((response) => {
-            console.log('Signup response:', response); // Log the response
-        }).catch((error) => {
-            console.error('Signup error:', error); // Log the error
+        dispatch(signupUser({ username, email, password })).then((result) => {
+            if (signupUser.fulfilled.match(result)) {
+                navigate('/loggedin');
+            }
         });
     };
 
     return (
-        <div>
-            <h1>STUXNET</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Signup</button>
-            </form>
-            {error && <p>{error.error}</p>}
-            <footer>Built by SUNIR</footer>
+        <div className="auth-page">
+            <h1 ><Link to="/" className='home-link'>S T U X n e t</Link></h1>
+            <div className="form-container">
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <button type="submit" className="authbutton">Signup</button>
+                </form>
+                {error && <p className="error-message">{error.error}</p>}
+                <p className='ask'>
+                    Already have an account? <Link to="/login" className="link-white">Login</Link>
+                </p>
+            </div>
         </div>
     );
 };

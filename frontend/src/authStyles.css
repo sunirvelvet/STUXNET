@@ -1,0 +1,233 @@
+/* authStyles.css */
+body.auth-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #121212; /* Matches Epic Games background color */
+    color: white;
+    height: 100vh; /* Make sure body takes full height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+h1 {
+    padding: 1rem;
+}
+
+.home-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+header, footer {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+button {
+    margin: 0.5rem;
+    padding: 1rem 2rem; /* Increase padding for larger button */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 20px; /* Increase font size for larger button */
+    border-radius: 25px; /* Curved edges */
+}
+
+button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+
+.signup-button {
+    background-color: transparent;
+    color: white;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.signup-button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.signup-button:hover::after {
+    bottom: -5px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    opacity: 1;
+    transform: scaleX(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.login-button {
+    background-color: transparent;
+    color: white;
+    border-radius: 25px; /* Rounded corners */
+    border: 2px solid white;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login-button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.login-button:hover::after {
+    bottom: -5px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    opacity: 1;
+    transform: scaleX(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px); /* Adjust height to fit the screen without scrolling */
+    margin-top: -50px; /* Adjust margin to move form up */
+}
+
+.form-container h1 {
+    margin-bottom: 2rem;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 1rem;
+    margin: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 300px;
+    background-color: #121212;
+    color: white;
+    font-size: 18px; /* Increase font size */
+    transition: all 0.3s;
+}
+
+.form-container input:focus {
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Highlight border on focus */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); /* Add shadow on focus */
+}
+
+.form-container button {
+    width: 50%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.form-container p {
+    margin-top: 1rem;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.signup-link {
+    margin-top: 10px;
+}
+
+.welcome-logout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header-buttons p {
+    margin-right: 1rem;
+    font-size: 25px; /* Adjust this value to make the text bigger */
+}
+
+
+
+.nav a:last-child {
+    margin-right: 0; /* Remove the right margin from the last item */
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.nav a:hover::after {
+    bottom: -5px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    opacity: 1;
+    transform: scaleX(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.error-message{
+    text-align: center;
+    background-color: red;
+    color: white;
+    width: 15%;
+    height: 38px;
+    padding-top: 13px;
+}
+
+.link-white {
+    color: white;
+    text-decoration: none;
+}
+
+.link-white:hover {
+    text-decoration: underline;
+}

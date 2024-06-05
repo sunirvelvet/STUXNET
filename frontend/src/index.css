@@ -1,5 +1,6 @@
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,8 +8,8 @@ body {
   color: white;
 }
 
-header, footer {
-  background-color: #121212;
+footer {
+  background-color: black;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -30,23 +31,94 @@ header, footer {
   margin: 0;
 }
 
-
 nav a {
   color: white;
   text-decoration: none;
-  margin: 80px
+  margin-right: 30px; /* Adjust the margin to increase the gap */
+  position: relative;
+  font-size: 30px; /* Adjust the font size as needed */
+}
+
+nav a:last-child {
+  margin-right: 0; /* Remove the right margin from the last item */
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+
+nav a:hover::after {
+  bottom: -5px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  opacity: 1;
+  transform: scaleX(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
-  background-color: #61dafb;
+  background-color: white;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #21a1f1;
+
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.signup-container h1 {
+  margin-bottom: 2rem;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.ask {
+  text-align: center;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 1rem;
+  margin: 15px;
+  border: 1px solid #ccc;
+  background-color: #121212;
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-container p {
+  margin-top: 10px;
 }
 
 .games-list {
@@ -54,6 +126,7 @@ button:hover {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding: 1rem;
+  font-family: sans-serif;
 }
 
 .games-list div {
@@ -66,12 +139,41 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: border 0.3s, box-shadow 0.3s; /* Add transition for smooth effect */
+  position: relative;
+  overflow: hidden;
 }
+
+.games-list div:hover {
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Highlight border on hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Add shadow on hover */
+}
+
+.games-list div::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+  transition: top 0.5s, left 0.5s;
+  transform: rotate(30deg);
+  opacity: 0;
+}
+
+.games-list div:hover::after {
+  top: 100%;
+  left: 100%;
+  opacity: 1;
+}
+
 .games-list img {
   max-width: 200px;
   height: 300px;
   object-fit: cover;
   border-radius: 10px;
+  transition: opacity 0.4s;
 }
 
 h2, p {
